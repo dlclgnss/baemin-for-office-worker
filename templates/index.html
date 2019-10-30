@@ -1,0 +1,56 @@
+{% extends 'base.html' %}
+{% block title %}메인페이지{% endblock %}
+{% block body %}
+
+
+{% include 'navbar.html'%}
+<div class='container '>
+  {% if user.is_authenticated %}
+    {% if user.partner %}
+    <div class="row">
+      <div class="col-sm-6 col-sm-offset-3"> <!--중간으로 배치-->
+          <h2 class="br">환영합니다.</h2>
+          <table class="table table-striped">
+            <tr>
+              <th>업체명</th>
+              <td>{{user.partner.name}}</td>
+            </tr>
+            <tr>
+              <th>연락처</th>
+              <td>{{user.partner.contact}}</td>
+            </tr>
+            <tr>
+              <th>주소</th>
+              <td>{{user.partner.address}}</td>
+            </tr>
+            <tr>
+              <th>업체소개</th>
+              <td>{{user.partner.description}}</td>
+            </tr>
+          </table>
+          <a href="{% url 'edit' %}">
+            <button class="btn btn-default btn-block">수정</button>
+          </a>
+        </div>
+      </div>
+
+      {% else %}
+        <div class="row">
+          <div class="col-sm-6 col-sm-offset-3">
+            <div class='br'> <b>※추가정보를 입력하세요.</b></div>
+            <form class="" action="" method="post">
+              {% csrf_token %}
+              {{ partner_form.as_p }}
+              <button type="submit" name="button" class='btn btn-default'>저장</button>
+            </form>
+         </div>
+       </div>
+
+    {% endif %}
+  {% else %}
+    <p>로그인 해주세요.</p>
+  {% endif %}
+</div>
+
+
+{% endblock %}

@@ -1,0 +1,22 @@
+{% extends 'base.html' %}
+{% block title %}배달의민족 sinup{% endblock %}
+
+
+{% block body %}
+
+<div class="container">
+  <form class="form-signin" role="form" method="post" action="">
+    {% csrf_token %}
+    <h2 class="form-signin-heading a">로그인</h2>
+    <input type="texyt" class="form-control br"
+      placeholder="Username" name='username' required="" autofocus="">
+    <input type="password" class="form-control br"
+      placeholder="Password" name='password' required="">
+      <div class='a'>{{ error }}</div> <!--error의 키값이 출력-->
+    <button class="btn btn-lg btn-primary btn-block" type="submit">
+      Login
+    </button>
+  </form>
+</div>
+
+{% endblock %}

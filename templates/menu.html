@@ -1,0 +1,31 @@
+{% extends 'base.html' %}
+{% block title %}메뉴페이지{% endblock %}
+{% block body %}
+{% include 'navbar.html'%}
+<div class="container">
+  <div class="row">
+    <div class="col-sm-6 col-sm-offset-3">
+        <h3 class="br">메뉴 리스트</h3>
+        <table class="table">
+          <tr>
+            <th>이미지</th>
+            <th>메뉴이름</th>
+            <th>가격</th>
+          </tr>
+            {% for menu in menu_list %}
+            <tr> <!--url를 꼭 붙여줘야 된다.-->
+              <td> <img class='images'src="{{ menu.image.url }}"> </td>
+              <td>{{menu.name}}</td>
+              <td>{{menu.price}}</td>
+            </tr>
+            {% endfor %}
+          </table>
+        <a href="{% url 'menu_add' %}">
+          <button class="btn btn-default btn-block">메뉴 추가하기</button>
+        </a>
+    </div>
+  </div>
+</div>
+
+
+{% endblock %}

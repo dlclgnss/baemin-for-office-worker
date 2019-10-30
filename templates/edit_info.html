@@ -1,0 +1,21 @@
+{% extends 'base.html' %}
+{% block title %}배달의 민족 index페이지{% endblock %}
+{% block body %}
+
+
+{% include 'navbar.html'%}
+<div class='container '>
+    <div class="row">
+      <div class="col-sm-6 col-sm-offset-3">
+        <div class='br'><b>※정보를 수정해 주세요.</b></div>
+        <form class="" action="" method="post">
+          {% csrf_token %}
+          {{ partner_form.as_p }}
+          <button type="submit" name="button" class='btn btn-default'>save</button>
+        </form>
+     </div>
+   </div>
+</div>
+
+
+{% endblock %}

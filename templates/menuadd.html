@@ -1,0 +1,20 @@
+{% extends 'base.html' %}
+{% block title %}메뉴추가페이지{% endblock %}
+{% block body %}
+{% include 'navbar.html'%}
+
+<div class="container">
+  <div class="row">
+    <div class="col-sm-6 col-sm-offset-3">
+      <h4 class="br">Menu_add</h4>
+      <form enctype="multipart/form-data" method="post" action="">
+        {% csrf_token %}
+         {{ menu_form.as_p }}
+        <button class="btn btn-default btn-block">메뉴 저장하기</button>
+      </form>
+    </div>
+  </div>
+</div>
+
+
+{% endblock%}

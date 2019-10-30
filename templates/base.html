@@ -7,7 +7,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta name="description" content="">
     <meta name="author" content="">
-    <title>{% block title %}치훈's 블로그{% endblock %}</title>
+    <title>{% block title %}배달의 민족 메인페이지{% endblock %}</title>
     <!-- <title /> -->
     <link rel="stylesheet" href='{% static "css/lib/bootstrap.min.css" %}'>
     <link rel="stylesheet" href='{% static "css/lib/font-awesome.min.css" %}'>
@@ -18,11 +18,9 @@
 
 </head>
 <body>
-{% include "navbar.html" %}
-  <div class="container">
     {% block body %}
     {% endblock %}
-  </div>
+
   <!-- <script src='{% static "js/lib/bootstrap.min.js" %}'></script> -->
 </body>
 </html>
