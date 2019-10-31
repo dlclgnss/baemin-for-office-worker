@@ -81,15 +81,8 @@ def signup(request):
     return render(request,'signup.html',ctx)
 
 
-#메뉴페이지
-def menu(request):
-    menu_list = Menu.objects.filter(partner = request.user.partner)
-    ctx={
-    'menu_list':menu_list
-    }
-    return render(request,'menu.html',ctx)
 
-
+#메뉴 추가페이지
 def menu_add(request):
     if request.method == 'POST':
         menu_form = MenuForm(request.POST,request.FILES)
@@ -105,3 +98,50 @@ def menu_add(request):
         'menu_form':menu_form
         }
     return render(request,'menuadd.html',ctx)
+
+
+
+#메뉴페이지
+def menu(request):
+    menu_list = Menu.objects.filter(partner = request.user.partner)
+    ctx={
+    'menu_list':menu_list
+    }
+    return render(request,'menu.html',ctx)
+
+
+#메뉴 상세페이지
+def menu_detail(request, menu_id):
+    menu=Menu.objects.get(id = menu_id)
+    ctx={'menu': menu}
+    return render(request,'menu_detail.html',ctx)
+
+
+#메뉴 상세페이지에서 수정하기
+def menu_edit(request, menu_id):
+    # menu=Menu.objects.get(id = menu_id)
+    menu=get_object_or_404(Menu,id = menu_id)
+    if request.method == 'POST':
+        menu_form = MenuForm(request.POST,request.FILES, instance=menu)
+        if menu_form.is_valid():
+            menu=menu_form.save(commit=False)
+            menu.partner = request.user.partner
+            menu.save()
+            return redirect("menu_detail",menu.id)
+    else:
+        menu_form = MenuForm(instance=menu)
+
+    ctx={
+        'menu_form':menu_form,
+        'replace':'수정',
+        }
+
+    return render(request,'menuadd.html',ctx)
+
+
+#메뉴목록하나 삭제하기
+def menu_delete(request, menu_id):
+    menu=get_object_or_404(Menu,id = menu_id)
+    menu.delete()
+
+    return redirect('menu')

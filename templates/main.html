@@ -1,0 +1,21 @@
+{% extends 'base.html' %}
+{% block title %}고객용페이지{% endblock %}
+{% block body %}
+{% include 'navbar.html'%}
+
+<div class='container '>
+  <div class="row">
+    <div class="col-sm-6 col-sm-offset-3">
+        <div class="row">
+          {% for partner in partner_list %}
+          <div class="col-sm-4">
+            <h4>{{partner.name}}</h4>
+            <div>{{partner.address}}</div>
+          </div>
+          {% endfor %}
+        </div>
+    </div>
+  </div>
+</div>
+
+{% endblock %}

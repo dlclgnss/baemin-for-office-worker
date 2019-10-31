@@ -9,6 +9,11 @@
   text-align: center;
 }
 
+/* 폰트색깔 */
+.fontcolor{
+  color: blue;
+}
+
 .br{
   margin-bottom:10px;
 }
@@ -30,4 +35,14 @@
 .images{
   width: 100px;
   height: auto;
+}
+
+/* 상세 이미지 */
+.images2{
+  width: 400px;
+  height: auto;
+}
+/* save버튼 오른쪽위 */
+.btnfloat{
+  float: right;
 }

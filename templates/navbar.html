@@ -7,13 +7,23 @@
             <span class="icon-bar"></span>
             <span class="icon-bar"></span>
           </button>
-          <a class="navbar-brand" href="#">배달의 민족</a>
+          <a class="navbar-brand" href="/">배달의 민족</a>
         </div>
         <div class="navbar-collapse collapse">
           <ul class="nav navbar-nav">
+            {% if user.is_authenticated %}
             <li class="active"><a href="{% url 'index'%}">메인</a></li>
             <li><a href="{% url 'menu' %}">메뉴</a></li>
-            <li><a href="#">주문</a></li>
+            <li><a href="order">주문</a></li>
+            <li>
+              <a onclick="return confirm('로그아웃 하시겠습니까')"
+                 href="{% url 'logout' %}">로그아웃
+              </a>
+            </li>
+            {% else %}
+            <li><a href="{% url 'login' %}">로그인</a></li>
+            <li><a href="{% url 'signup' %}">회원가입</a></li>
+            {% endif %}
           </ul>
         </div><!--/.nav-collapse -->
       </div>

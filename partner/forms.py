@@ -32,7 +32,7 @@ class MenuForm(ModelForm):
        #form에는 장고가 제공하는 위젯이라는게 있고 폼마다 내용의 특징을 달리 할 수 있다.
        # 장고 공식문서에서 ModelForm안에는 widgets을 찾아보면된다.
         widgets = {
-            # 'image': forms.TextInput(attrs={'class':'form-control'}),
+            # 'image': forms.FileInput(attrs={'class':'form-control'}),
             'name': forms.TextInput(attrs={'class':'form-control'}),
-            'price': forms.Textarea(attrs={'class':'form-control'}),
+            'price': forms.NumberInput(attrs={'class':'form-control'}),
         }
